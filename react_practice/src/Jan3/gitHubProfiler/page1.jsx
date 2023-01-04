@@ -19,12 +19,7 @@ const HomePage = () => {
     const fetchProfile = (name) => {
         console.log("user name", name)
         console.log("count1");
-        fetch(`https://api.github.com/users/${name}/repos`, {
-            headers: {
-                Authorization:
-                    "Bearer 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 ",
-            },
-        })
+        fetch(`https://api.github.com/users/${name}/repos`)
             .then((data) => data.json())
             .then((data) => setDetails(data));
 
