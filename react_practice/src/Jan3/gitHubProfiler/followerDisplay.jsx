@@ -29,7 +29,6 @@ const FollowerDisplay = () => {
                                 <p>{item.login}</p>
                                 <Link to="/" state={{ userDetail: item.login }}>
                                     <ButtonComponent
-                                        // functionality={() => { console.log("butterfly",item.id) }}
                                         tagName="View Profile"
                                     />
                                 </Link>
@@ -48,30 +47,3 @@ const FollowerDisplay = () => {
 }
 
 export default FollowerDisplay;
-
-// const FollowerDisplay = ({ source, name, functionality }) => {
-//     return (
-//         <>
-//         <div style={{
-//                    backgroundColor:"black",
-//                    color:"white",
-//                     margin: "10px"
-//                 }} >
-//             <img style={{
-//                     width: "100px",
-//                     heigth: "100px",
-//                     margin: "10px"
-//                 }}
-//             src={source} alt={name} />
-//             <p>{name}</p>
-//             <ButtonComponent
-//                 functionality={() => { console.log("butterfly") }}
-//                 tagName="View Profile"
-//             />
-//             </div>
-//         </>
-
-//     )
-// }
-
-// export default FollowerDisplay;
