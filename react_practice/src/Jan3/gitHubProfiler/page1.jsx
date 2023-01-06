@@ -3,39 +3,67 @@
 // states - 2: * to get the user name
 //             * to store the details of the user 
 
+
+
 import { useEffect } from "react"
 import { useState } from "react"
 import ButtonComponent from "./button"
 import InputComponent from "./inputBox"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import Followers from "./follower"
 
 
 
 const HomePage = () => {
+
     const [userName, setUserName] = useState("")
+
     const [details, setDetails] = useState([])
-    // const [storeData, setStoreData] = useState([])
+    const [currentUser, setCurrentUser] = useState({})
+    const [showData, setShowData] = useState(false)
 
-    const fetchProfile = (name) => {
-        console.log("user name", name)
+    const location = useLocation();
+
+    // console.log(location.state.userDetail)
+    useEffect(() => {
+        if (location.state && location.state.userDetail) {
+            console.log(location.state.userDetail)
+            if (userName !== null) {
+                // console.log(location.state.userDetail)
+                setUserName(location.state.userDetail)
+            }
+        } else {
+            setUserName("")
+        }
+    }, [])
+
+    console.log("loc", userName)
+
+
+
+    const fetchProfile = () => {
+        console.log("username", userName)
         console.log("count1");
-        fetch(`https://api.github.com/users/${name}/repos`, {
-            headers: {
-                Authorization:
-                    "Bearer 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 ",
-            },
-        })
+        fetch(`https://api.github.com/users/${userName}/repos`)
             .then((data) => data.json())
-            .then((data) => setDetails(data));
+            .then((data) => {
+                setDetails(data);
+                setCurrentUser((data[0].owner))
+            }
+            )
+        setShowData(true);
 
-        setUserName("")
+
     }
+
+
     console.log("name", userName)
     console.log("detail", details)
+    console.log("owner", currentUser)
 
     return (
         <>
-            <h1>GitHub Profiler</h1>
+            <h1 className="fontColor">GitHub Profiler</h1>
             <div>
                 <InputComponent
                     name="UserName"
@@ -44,38 +72,28 @@ const HomePage = () => {
                     onChange={(name, value) => setUserName(value)}
                 />
                 <ButtonComponent
-                    onClick={() => { fetchProfile(userName) }}
+                    functionality={() => { fetchProfile(userName) }}
                     tagName="Submit"
                 />
             </div>
+            <div>
+                {showData && <><img className="image"
+                    src={currentUser.avatar_url} alt={currentUser.login} />
+                    <div><Followers followerList={currentUser.login} /></div> </>}
+            </div>
             <div >
-                <div style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    // columnGap:"30px",
-                    flexWrap: "wrap"
-                }} >
+                <div className="cardDisplay">
                     {details.map((item) => {
                         return (
                             <>
-                                <div style={{
-                                    width: "50%",
-                                    // display:"flex",
-                                    // flexDirection:"row",
-                                    // textAlign:"center"
-                                }}
-                                >
-                                    <Link className="link" to="/page2" state={{"itemValue":item }}>
-                                    <img style={{
-                                        width: "100px",
-                                        heigth: "100px",
-                                        margin: "10px"
-                                    }}
-                                        src={item.owner.avatar_url} alt={item.name} />
-                                    <p>{item.name}</p>
-                                  
+
+                                <div className="card">
+                                    <Link className="link" to="/page2" state={{ "itemValue": item }}>
+                                        <p>{item.name}</p>
                                     </Link>
                                 </div>
+
+
                             </>
                         )
                     })}

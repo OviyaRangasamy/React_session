@@ -1,12 +1,12 @@
-const InputComponent = ({name,type,value,onChange})=>{
-    return(
+const InputComponent = ({ name, type, value, onChange }) => {
+    return (
         <>
-        <input 
-        name ={name}
-        type={type} 
-        value = {value}
-        onChange = {(e)=>{onChange(name,e.target.value)}}
-        />
+            <input className="inputBox"
+                name={name}
+                type={type}
+                value={value}
+                onChange={(e) => { onChange(name, e.target.value) }}
+            />
         </>
     )
 }

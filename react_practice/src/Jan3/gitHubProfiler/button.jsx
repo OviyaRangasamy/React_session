@@ -1,7 +1,7 @@
-const ButtonComponent = ({onClick,tagName})=>{
-    return(
+const ButtonComponent = ({ functionality, tagName }) => {
+    return (
         <>
-        <button onClick={onClick}>{tagName}</button>
+            <button className="button" onClick={functionality}>{tagName}</button>
         </>
     )
 }

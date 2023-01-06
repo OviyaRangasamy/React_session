@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter,Routes,Route, Router } from "react-router-dom";
+import "./App.css";
 import App from './App'
 import Counter from './counter/counter'
 import DynamicForm from './dynamicForm/dynamicForm'
@@ -12,8 +14,11 @@ import Project1 from './To-Do/enterDataProject/enterDataProject'
 import DebounceSrcatch from './useCallBack/useCallBack'
 import { UCBParentComponent } from './useCallBack/useCallBackEg'
 import LoopUpToMemo from './useMemo/example1'
-import { UseMemoProductFilter } from './useMemo/ProductFilter/useMemoFilter'
+// import { UseMemoProductFilter } from './useMemo/ProductFilter/useMemoFilter'
 import { Parent } from './treeTrial/Parent'
+import HomePage from './Jan3/gitHubProfiler/page1'
+import RepoDescription from './Jan3/gitHubProfiler/page2';
+import FollowerDisplay from './Jan3/gitHubProfiler/followerDisplay';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
  <>
@@ -32,7 +37,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
  {/* <UseEffectProductFilter/> */}
  {/* <UseMemoProductFilter/> */}
  {/* <UCBParentComponent/> */}
- <DynamicForm/>
+ {/* <DynamicForm/> */}
+ {/* <HomePage/> */}
+
+<BrowserRouter>
+<Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/page2" element={<RepoDescription />} />
+    <Route path="/followers" element={<FollowerDisplay/>}/>
+</Routes>
+</BrowserRouter>
+
 
  </>
 )
