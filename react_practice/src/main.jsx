@@ -43,7 +43,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 <BrowserRouter>
 <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/page2" element={<RepoDescription />} />
+    <Route path="/repository" element={<RepoDescription />} />
     <Route path="/followers" element={<FollowerDisplay/>}/>
 </Routes>
 </BrowserRouter>
