@@ -17,50 +17,7 @@ import Followers from "./follower"
 const HomePage = () => {
 
     const [userName, setUserName] = useState("")
-
-    const [details, setDetails] = useState([])
-    const [currentUser, setCurrentUser] = useState({})
-    const [showData, setShowData] = useState(false)
-
-    const location = useLocation();
-
-    // console.log(location.state.userDetail)
-    useEffect(() => {
-        if (location.state && location.state.userDetail) {
-            console.log(location.state.userDetail)
-            if (userName !== null) {
-                // console.log(location.state.userDetail)
-                setUserName(location.state.userDetail)
-            }
-        } else {
-            setUserName("")
-        }
-    }, [])
-
-    console.log("loc", userName)
-
-
-
-    const fetchProfile = () => {
-        console.log("username", userName)
-        console.log("count1");
-        fetch(`https://api.github.com/users/${userName}/repos`)
-            .then((data) => data.json())
-            .then((data) => {
-                setDetails(data);
-                setCurrentUser((data[0].owner))
-            }
-            )
-        setShowData(true);
-
-
-    }
-
-
-    console.log("name", userName)
-    console.log("detail", details)
-    console.log("owner", currentUser)
-
+    console.log("name", userName)  
     return (
         <>
             <h1 className="fontColor">GitHub Profiler</h1>
@@ -71,34 +28,13 @@ const HomePage = () => {
                     value={userName}
                     onChange={(name, value) => setUserName(value)}
                 />
+                <Link to = {`/repos/${userName}`} >
                 <ButtonComponent
-                    functionality={() => { fetchProfile(userName) }}
                     tagName="Submit"
                 />
+                </Link>
             </div>
-            <div>
-                {showData && <><img className="image"
-                    src={currentUser.avatar_url} alt={currentUser.login} />
-                    <div><Followers followerList={currentUser.login} /></div> </>}
-            </div>
-            <div >
-                <div className="cardDisplay">
-                    {details.map((item) => {
-                        return (
-                            <>
-
-                                <div className="card">
-                                    <Link className="link" to="/page2" state={{ "itemValue": item }}>
-                                        <p>{item.name}</p>
-                                    </Link>
-                                </div>
-
-
-                            </>
-                        )
-                    })}
-                </div>
-            </div>
+            
         </>
     )
 }

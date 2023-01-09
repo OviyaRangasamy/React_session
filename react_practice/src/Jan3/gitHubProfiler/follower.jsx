@@ -8,28 +8,10 @@ import FollowerDisplay from "./followerDisplay";
 const Followers = (props) => {
     console.log(props.followerList)
     const userName = props.followerList
-    const [followers, setfollowers] = useState([])
-    // const followerDisplay = () => {
-    console.log("entered")
-    console.log("u", userName)
-    useEffect(() => {
-        fetch(`https://api.github.com/users/${userName}/followers`)
-            .then((res) => res.json())
-            .then((data) => setfollowers(data))
-    }
-        , [userName])
-
-    // }
-    console.log("u2", userName)
-    console.log("1", followers)
-
     return (
-        <>
-            {console.log("2", followers)}
-            <Link className="link" to="/followers" state={{ "followers": followers }}>
-                {console.log("3", followers)}
+        <>     
+            <Link className="link" to={`/followers/${userName}`} >
                 <ButtonComponent
-                    // functionality={followerDisplay}
                     tagName="Followers"
                 />
             </Link>
