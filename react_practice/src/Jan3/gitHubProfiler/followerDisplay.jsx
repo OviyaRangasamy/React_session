@@ -14,7 +14,7 @@ const FollowerDisplay = () => {
       .then((data) => setDisplayList(data));
   }, [name]);
 
-<<<<<<< HEAD
+
   return (
     <>
       <div>
@@ -53,7 +53,7 @@ const FollowerDisplay = () => {
     </>
   );
 };
-=======
+
 
     return (
         <>
@@ -84,7 +84,5 @@ const FollowerDisplay = () => {
         </>
 
     )
-}
->>>>>>> 0ec58b3fecb6db59561724a4f8dcf7f86271909e
 
 export default FollowerDisplay;
