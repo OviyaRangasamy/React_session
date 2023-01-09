@@ -30,6 +30,7 @@ import Home from "./Jan3/routing/home";
 import About from "./Jan3/routing/about";
 import Error from "./Jan3/routing/error";
 import Logup from "./simpleForm/simpleform";
+import LikeCards from "./twitterLike/likeCard";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <UCBParentComponent/> */}
     {/* <DynamicForm/> */}
     {/* <HomePage/> */}
-    <Logup/>
+    {/* <Logup/> */}
+    <LikeCards/>
 
     {/* <BrowserRouter>
 <Routes>
