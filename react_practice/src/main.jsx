@@ -8,7 +8,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import App from "./App";
 import Counter from "./counter/counter";
 import DynamicForm from "./dynamicForm/dynamicForm";
@@ -31,32 +31,42 @@ import About from "./Jan3/routing/about";
 import Error from "./Jan3/routing/error";
 import Logup from "./simpleForm/simpleform";
 import LikeCards from "./twitterLike/likeCard";
+import A from "./contextAPI/propDrilling/compA";
+import File1 from "./theme/file1";
+import File2 from "./theme/file2";
+import File3 from "./theme/file3";
+import Dat19PerformanceIssue from "./useTransition/useTransition";
+import UseIdExample from "./useTransition/eg1";
+import WithStyledComponentExample from "./styledComponent/mainUI";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "repos/:name",
-    caseSensitive:true,
-    element: <RepoDisplay />,
-  },
-  {
-    path: "repositorydetail/:name/:reponame",
-    caseSensitive:true,
-    element: <RepoDescription />,
-  },
-  {
-    path: "followers/:name",
-    caseSensitive:true,
-    element: <FollowerDisplay />,
-  },
-  {
-    path: "*",
-    element: <Error />,
-  },
-]);
+
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <HomePage />,
+//   },
+//   {
+//     path: "repos/:name",
+//     caseSensitive:true,
+//     element: <RepoDisplay />,
+//   },
+//   {
+//     path: "repositorydetail/:name/:reponame",
+//     caseSensitive:true,
+//     element: <RepoDescription />,
+//   },
+//   {
+//     path: "followers/:name",
+//     caseSensitive:true,
+//     element: <FollowerDisplay />,
+//   },
+//   {
+//     path: "*",
+//     element: <Error />,
+//   },
+// ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
@@ -78,7 +88,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <DynamicForm/> */}
     {/* <HomePage/> */}
     {/* <Logup/> */}
-    <LikeCards/>
+    {/* <LikeCards/> */}
+    {/* <A/> */}
+    {/* <File1/> */}
+    {/* <App/> */}
+    {/* <Dat19PerformanceIssue/> */}
+    {/* <UseIdExample/> */}
+    <WithStyledComponentExample/>
 
     {/* <BrowserRouter>
 <Routes>
@@ -89,5 +105,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 </BrowserRouter> */}
 
     {/* <RouterProvider router={router} /> */}
+
+
+    
   </>
 );
